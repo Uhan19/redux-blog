@@ -13,7 +13,7 @@ export default function(state = {}, action) {
 
       return { ...state, [post.id]: post }; // same as the commented code above
     case FETCH_POSTS:
-      return _.mapKeys(action.payload.data, "id");
+      return _.mapKeys(action.payload.data, "id"); // change state to an object instead of array, ease of maintenance
     default:
       return state;
   }
