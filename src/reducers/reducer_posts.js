@@ -10,7 +10,6 @@ export default function(state = {}, action) {
       // const newState = { ...state };
       // newState[post.id] = post;
       // return newState;
-
       return { ...state, [post.id]: post }; // same as the commented code above
     case FETCH_POSTS:
       return _.mapKeys(action.payload.data, "id"); // change state to an object instead of array, ease of maintenance
