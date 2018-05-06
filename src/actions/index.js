@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export const FETCH_POSTS = "fetch_posts";
+export const FETCH_POST = "fetch_post";
+export const CREATE_POSTS = "create_posts";
 
 const rootURL = "http://reduxblog.herokuapp.com/api";
 const API_KEY = "?key=lamborghiniaventadorLP700-4";
@@ -10,6 +12,26 @@ export function fetchPosts() {
 
   return {
     type: FETCH_POSTS,
+    payload: request,
+  };
+}
+
+export function createPost(values, callback) {
+  const request = axios
+    .post(`${rootURL}/posts${API_KEY}`, values)
+    .then(() => callback());
+
+  return {
+    type: CREATE_POSTS,
+    payload: request,
+  };
+}
+
+export function fetchPost(id) {
+  const request = axios.get(`${rootURL}/posts/${id}${API_KEY}`);
+
+  return {
+    type: FETCH_POST,
     payload: request,
   };
 }

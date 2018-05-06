@@ -38,4 +38,4 @@ function mapStateToProps({ posts }) {
   return { posts };
 }
 
-export default connect(null, { fetchPosts })(PostsIndex); //same as mapDispatchToProps, connects is taking care of it for us here
+export default connect(mapStateToProps, { fetchPosts })(PostsIndex); //same as mapDispatchToProps, connects is taking care of it for us here
